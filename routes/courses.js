@@ -1,16 +1,18 @@
+const {Router} = require('express');
 
-function createCourseRoute(app) {
-    app.get("/course/preview", (req, res) => {
+const courseRouter = Router();
+
+
+
+    courseRouter.get("/preview", (req, res) => {
       res.json(
         { message: "Course preview"});
     });
   
-    app.get("/course/purchase", (req, res) => {
+    courseRouter.get("/purchase", (req, res) => {
       res.json(
         { message: "Course purchased" });
     });
-  }
+  
 
-  module.exports = {
-    createCourseRoute: createCourseRoute
-}
+  module.exports = courseRouter

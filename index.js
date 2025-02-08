@@ -2,10 +2,12 @@ const express = require("express");
 const app = express();
 const userRouter = require("./routes/users");
 const courseRouter = require("./routes/courses");
+const adminRouter = require("./routes/admin");
 
 
-userRouter(app);
-courseRouter(app);
+app.use("/user", userRouter);
+app.use("/course", courseRouter);
+app.use("/admin", adminRouter);
 
 
 

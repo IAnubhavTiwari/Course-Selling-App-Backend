@@ -1,23 +1,25 @@
+const {Router} = require('express');
 
 
-function userRouterCreate(app) {
+  const userRouter = Router();
+
     //signup
-    app.post("/user/signup", (req, res) => {
+    userRouter.post("/signup", (req, res) => {
       res.json(
         { message: "User signed up" });
     });
     
     //signin
-    app.post("/user/signin", (req, res) => {
+    userRouter.post("/signin", (req, res) => {
       res.json(
         { message: "User signed in" });
     });
     
     
-    app.get("/user/purchases", (req, res) => {
+    userRouter.get("/purchases", (req, res) => {
       res.json(
         { message: "User purchases" });
     });
-  }
 
-  module.exports = { userRouterCreate: userRouterCreate }
+
+  module.exports = userRouter
