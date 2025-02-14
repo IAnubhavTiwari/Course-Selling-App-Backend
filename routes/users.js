@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const {userModel} = require('../db');
+const {userModel, purchaseModel} = require('../db');
 const jwt = require('jsonwebtoken');
 const {JWT_USER_PASSWORD} = require('../config');
 const userMiddleware = require('../middlewares/users');
@@ -54,9 +54,16 @@ const userMiddleware = require('../middlewares/users');
      const purchases = await purchaseModel.find({
         userId: userId});
 
+          const courseData = await courseModel.find({
+            _id: {
+              $in: purchases.map(x => x.courseId)
+            }
+          });
 
       res.json(
-        { purchases: purchases });
+        { purchases: purchases,
+          courses: courseData
+         });
     });
 
 
